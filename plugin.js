@@ -1,4 +1,6 @@
 Selectize.define('gmailize', function(options) {
+	var EMAIL_REGEX = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+
 	this.require('remove_button');
 
 	if (this.settings.mode === 'single') {
@@ -8,7 +10,7 @@ Selectize.define('gmailize', function(options) {
 	options = $.extend({		
 		invalidEmailClassName: 'gmailize-invalid',
 		validate: function(email) {
-			return true;
+			return email.match(EMAIL_REGEX);
 		}
 	}, options);	
 
